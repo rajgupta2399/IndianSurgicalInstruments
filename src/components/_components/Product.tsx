@@ -22,10 +22,10 @@ export default function Product({ product }: ProductProps) {
           height={300}
           className="transition-transform duration-300 hover:scale-105 rounded-lg"
         />
-        <div className="absolute bottom-3 right-3 flex flex-wrap items-center gap-2">
+        <div className="absolute bottom-1 right-3 flex flex-wrap items-center gap-2">
           {product.ribbon && (
-            <Badge className="rounded-md bg-gradient-to-r from-purple-500 to-indigo-500 px-3 py-1 text-white shadow">
-              {product.ribbon}
+            <Badge className="rounded-md bg-gray-900 px-3 py-0.5 text-white shadow">
+              {product.brand}
             </Badge>
           )}
           {product.discount && <DiscountBadge data={product.discount} />}
