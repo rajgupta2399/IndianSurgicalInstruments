@@ -13,14 +13,14 @@ export default function Product({ product }: ProductProps) {
   const mainImage = product.media?.mainMedia?.image;
 
   return (
-    <Link href={`/products/${product.slug}`} className="h-full border bg-card">
+    <Link href={`/products/${product.slug}`} className="h-full  bg-card rounded-lg">
       <div className="relative overflow-hidden">
         <WixImage
           mediaIdentifier={mainImage?.url}
           alt={mainImage?.altText}
           width={300}
           height={300}
-          className="transition-transform duration-300 hover:scale-105"
+          className="transition-transform duration-300 hover:scale-105 rounded-lg"
         />
         <div className="absolute bottom-3 right-3 flex flex-wrap items-center gap-2">
           {product.ribbon && (
@@ -32,11 +32,18 @@ export default function Product({ product }: ProductProps) {
         </div>
       </div>
       <div className="space-y-3 p-3">
-        <h3 className="text-md font-semibold line-clamp-2">{product.name}</h3>
+        <h3 className="text-sm line-clamp-2 font-semibold">{product.name}</h3>
 
         {/* Price displayed below product name */}
         <p className="text-sm font-semibold text-gray-600">
-          {getFormattedPrice(product)}
+          <span className="pr-1 text-gray-900">
+            {getFormattedPrice(product)}
+          </span>
+          {product?.price?.formatted?.price && (
+            <span className="text-gray-500 line-through text-xs">
+              {product.price.formatted.price}
+            </span>
+          )}
         </p>
         {/* <div
           className="line-clamp-5"
