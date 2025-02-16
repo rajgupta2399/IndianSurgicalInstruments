@@ -57,21 +57,6 @@ const Banners = () => {
             />
           </div>
         </CarouselItem>
-        <CarouselItem>
-          <div className="flex h-28 w-full items-center justify-center bg-secondary md:h-60">
-            <Image
-              src={
-                "https://d29azk3rh443yy.cloudfront.net/static/Banner/Category/Medical_Gauze_Dressings_and_Pads_-_surginatal.jpg"
-              }
-              alt="Banner 2"
-              unoptimized
-              className="h-full w-full rounded-xl object-fill"
-              priority
-              width={100}
-              height={100}
-            />
-          </div>
-        </CarouselItem>
       </CarouselContent>
     </Carousel>
   );
