@@ -6,6 +6,24 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 } */
 
+@layer components {
+  .nav-link {
+    @apply block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 lg:hover:bg-transparent transition-colors duration-200;
+  }
+
+  .dropdown-container {
+    @apply lg:absolute lg:top-full lg:left-0 lg:right-0 lg:w-screen
+    bg-white lg:shadow-lg lg:border-t border-gray-100 
+    lg:opacity-0 lg:group-hover:opacity-100 lg:invisible lg:group-hover:visible
+    transition-all duration-300 ease-in-out transform 
+    lg:translate-y-2 lg:group-hover:translate-y-0;
+  }
+
+  .dropdown-content {
+    @apply max-w-7xl mx-auto lg:grid lg:grid-cols-2 xl:grid-cols-4 lg:gap-8 lg:px-8 lg:py-8;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

@@ -21,7 +21,7 @@ import Banners from "@/components/_components/Banners";
 export default function Home() {
   return (
     <>
-      <main className="mx-auto max-w-7xl space-y-5 px-5 py-10 sm:px-10">
+      <main className="mx-auto max-w-7xl space-y-5 px-5 py-16 sm:px-10">
         <Banners />
         <Suspense fallback={<LoadingSkeleton />}>
           <FeaturedProducts />

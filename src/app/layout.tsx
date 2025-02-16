@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "./Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +17,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "ISI Shop",
-  description: "The Indian Surgical Instruments Project is an e-commerce web application designed to facilitate the online sale of surgical instruments across India.",
+  description:
+    "The Indian Surgical Instruments Project is an e-commerce web application designed to facilitate the online sale of surgical instruments across India.",
 };
 
 export default function RootLayout({
@@ -26,6 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Header />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
