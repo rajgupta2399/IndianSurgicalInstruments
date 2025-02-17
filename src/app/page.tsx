@@ -17,6 +17,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Banners from "@/components/_components/Banners";
+import DigitalInstrumentsSection from "@/components/_components/HomeComponentSection/DigitalInstrumentSection";
 
 export default function Home() {
   return (
@@ -25,6 +26,9 @@ export default function Home() {
         <Banners />
         <Suspense fallback={<LoadingSkeleton />}>
           <FeaturedProducts />
+        </Suspense>
+        <Suspense fallback={<LoadingSkeleton />}>
+          <DigitalInstrumentsSection />
         </Suspense>
       </main>
     </>
