@@ -19,6 +19,14 @@ import {
 import Banners from "@/components/_components/Banners";
 import DigitalInstrumentsSection from "@/components/_components/HomeComponentSection/DigitalInstrumentSection";
 import { TextAnimate } from "@/components/magicui/text-animate";
+import InjectableDrugsSection from "@/components/_components/HomeComponentSection/InjectableDrugSection";
+import SurgicalSection from "@/components/_components/HomeComponentSection/SurgicalSection";
+import OrthopaedicSection from "@/components/_components/HomeComponentSection/OrthopaedicSection";
+import GauzeSection from "@/components/_components/HomeComponentSection/GauzeProductsSection";
+import BabyCareSection from "@/components/_components/HomeComponentSection/BabyCareSection";
+import HomeAndPersonalSection from "@/components/_components/HomeComponentSection/HomePersonalSection";
+import CriticalCareSection from "@/components/_components/HomeComponentSection/CriticalCareSection";
+import UrologyCareSection from "@/components/_components/HomeComponentSection/UrologySection";
 
 export default function Home() {
   return (
@@ -30,6 +38,30 @@ export default function Home() {
         </Suspense>
         <Suspense fallback={""}>
           <DigitalInstrumentsSection />
+        </Suspense>
+        <Suspense fallback={""}>
+          <InjectableDrugsSection />
+        </Suspense>
+        <Suspense fallback={""}>
+          <SurgicalSection />
+        </Suspense>
+        <Suspense fallback={""}>
+          <OrthopaedicSection />
+        </Suspense>
+        <Suspense fallback={""}>
+          <GauzeSection />
+        </Suspense>
+        <Suspense fallback={""}>
+          <BabyCareSection />
+        </Suspense>
+        <Suspense fallback={""}>
+          <HomeAndPersonalSection />
+        </Suspense>
+        <Suspense fallback={""}>
+          <CriticalCareSection />
+        </Suspense>
+        <Suspense fallback={""}>
+          <UrologyCareSection />
         </Suspense>
       </main>
     </>

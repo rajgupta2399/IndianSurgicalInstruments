@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import {
-  Code2,
+  // Code2,
   ChevronDown,
   Menu,
   X,
@@ -15,6 +15,8 @@ import {
   Users,
   Shield,
 } from "lucide-react";
+import Image from "next/image";
+import Logo from "../assets/ISI.png"
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,15 +35,19 @@ const Header = () => {
 
   return (
     <header className="fixed left-0 top-0 z-50 w-full bg-white shadow-sm">
-      <nav className="mx-auto h-16 max-w-7xl px-4">
+      <nav className="mx-auto h-16 max-w-7xl px-5">
         <div className="flex h-full items-center justify-between">
           {/* Logo */}
           <a
             href="#"
             className="flex items-center gap-2 text-gray-900 transition-colors hover:text-blue-600"
           >
-            <Code2 className="h-6 w-6" />
-            <span className="text-lg font-semibold">CodeBox</span>
+            <Image
+            width={100}
+            height={100}
+            src={Logo}
+            alt="logo"
+            />
           </a>
 
           {/* Mobile Menu Button */}
