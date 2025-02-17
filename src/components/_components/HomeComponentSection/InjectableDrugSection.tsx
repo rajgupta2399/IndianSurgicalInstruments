@@ -106,7 +106,7 @@ export default function InjectableDrugsSection() {
               alt="digitalInstrument Banner"
               width={0}
               height={0}
-              className="w-full rounded-lg"
+              className="w-full rounded-lg h-28 sm:h-full"
             />
           </Link>
         </div>
