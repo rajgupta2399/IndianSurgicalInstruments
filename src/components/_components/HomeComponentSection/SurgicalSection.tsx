@@ -18,7 +18,6 @@ import SE4 from "../../../assets/Gynaecology-1.jpg";
 import SE5 from "../../../assets/Infusion-Therapy-1.jpg";
 import Image from "next/image";
 import Link from "next/link";
-import { TextAnimate } from "@/components/magicui/text-animate";
 // import { ChevronRight } from "lucide-react";
 
 // Skeleton Loader for better UX
@@ -66,9 +65,7 @@ export default function SurgicalSection() {
     return (
       <div className="relative space-y-3 overflow-hidden">
         <h2 className="text-xl font-bold sm:text-2xl sm:font-semibold">
-          <TextAnimate animation="blurInUp" by="character" once>
-            Surgical
-          </TextAnimate>
+          Surgical
         </h2>
         <div className="relative mx-auto w-full max-w-screen-xl">
           <Carousel className="w-full">

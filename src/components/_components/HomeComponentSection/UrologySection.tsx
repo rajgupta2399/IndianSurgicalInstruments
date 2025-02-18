@@ -18,7 +18,6 @@ import UC4 from "../../../assets/Catheters-1.jpg";
 import UC5 from "../../../assets/Condom-_Catheter-1.jpg";
 import Image from "next/image";
 import Link from "next/link";
-import { TextAnimate } from "@/components/magicui/text-animate";
 // import { ChevronRight } from "lucide-react";
 
 // Skeleton Loader for better UX
@@ -66,9 +65,7 @@ export default function UrologyCareSection() {
     return (
       <div className="relative space-y-3 overflow-hidden">
         <h2 className="text-xl font-bold sm:text-2xl sm:font-semibold">
-          <TextAnimate animation="blurInUp" by="character" once>
-            Urology Care
-          </TextAnimate>
+          Urology Care
         </h2>
         <div className="relative mx-auto w-full max-w-screen-xl">
           <Carousel className="w-full">

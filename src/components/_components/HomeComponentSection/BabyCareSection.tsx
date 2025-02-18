@@ -18,7 +18,6 @@ import BC4 from "../../../assets/Breast-pump-1.jpg";
 import BC5 from "../../../assets/Newborn-Care-1.jpg";
 import Image from "next/image";
 import Link from "next/link";
-import { TextAnimate } from "@/components/magicui/text-animate";
 // import { ChevronRight } from "lucide-react";
 
 // Skeleton Loader for better UX
@@ -67,9 +66,7 @@ export default function BabyCareSection() {
     return (
       <div className="relative space-y-3 overflow-hidden">
         <h2 className="text-xl font-bold sm:text-2xl sm:font-semibold">
-          <TextAnimate animation="blurInUp" by="character" once>
-            Baby Care
-          </TextAnimate>
+          Baby Care
         </h2>
         <div className="relative mx-auto w-full max-w-screen-xl">
           <Carousel className="w-full">

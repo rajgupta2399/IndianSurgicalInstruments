@@ -18,7 +18,6 @@ import {
 } from "@/components/ui/carousel";
 import Banners from "@/components/_components/Banners";
 import DigitalInstrumentsSection from "@/components/_components/HomeComponentSection/DigitalInstrumentSection";
-import { TextAnimate } from "@/components/magicui/text-animate";
 import InjectableDrugsSection from "@/components/_components/HomeComponentSection/InjectableDrugSection";
 import SurgicalSection from "@/components/_components/HomeComponentSection/SurgicalSection";
 import OrthopaedicSection from "@/components/_components/HomeComponentSection/OrthopaedicSection";
@@ -92,9 +91,7 @@ async function FeaturedProducts() {
   return (
     <div className="relative space-y-3 overflow-hidden">
       <h2 className="text-xl font-bold sm:text-2xl sm:font-semibold">
-        <TextAnimate animation="blurInUp" by="character" once>
-          Featured Products
-        </TextAnimate>
+        Featured Products
       </h2>
 
       <div className="relative mx-auto w-full max-w-screen-xl">
