@@ -1,80 +1,126 @@
 "use client";
-import { useState } from "react";
-import { Home, List, Mail, User, Menu, X } from "lucide-react";
+import {
+  Home,
+  User,
+  LayoutGrid,
+  ShoppingCart,
+  CodesandboxIcon,
+} from "lucide-react";
 import Image from "next/image";
-import Logo from "../assets/ISI.png";
+import Logo from "../assets/logo1.png";
+import { Search, MessageCircle } from "lucide-react";
+import Link from "next/link";
+import whatsapp from "../assets/whatsapp.png";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   return (
     <>
       {/* Top Navbar for Large Screens */}
-      <header className="fixed top-0 left-0 z-50 w-full bg-white shadow-sm lg:block hidden">
-        <nav className="mx-auto h-16 max-w-7xl px-5 flex justify-between items-center">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2 text-gray-900">
-            <Image width={100} height={100} src={Logo} alt="logo" />
-          </a>
+      <header className="fixed left-0 top-0 z-50 hidden w-full bg-white shadow-sm lg:block">
+        <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-10">
+          {/* Left Side - Logo & Navigation */}
+          <div className="flex items-center gap-8">
+            {/* Logo */}
+            <a href="#" className="flex items-center gap-2 text-gray-900">
+              <Image width={110} height={100} src={Logo} alt="logo" />
+            </a>
 
-          {/* Full Navbar for Large Screens */}
-          <ul className="flex gap-6">
-            <li>
-              <a href="#" className="nav-link">Home</a>
-            </li>
-            <li>
-              <a href="#" className="nav-link">Category</a>
-            </li>
-            <li>
-              <a href="#" className="nav-link">Contact</a>
-            </li>
-            <li>
-              <a href="#" className="nav-link">Profile</a>
-            </li>
-          </ul>
+            {/* Navigation Links */}
+            <ul className="flex gap-0">
+              <li>
+                <Link
+                  href="#"
+                  className="nav-link flex items-center gap-1 align-middle"
+                >
+                  <LayoutGrid className="h-4 w-4" />
+                  <span className="text-sm font-semibold uppercase">
+                    Browse Categories
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="nav-link flex items-center gap-1 align-middle"
+                >
+                  <CodesandboxIcon className="h-4 w-4" />
+                  <span className="text-sm font-semibold uppercase">
+                    Popular Brands
+                  </span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Center - Search Bar */}
+          <div className="relative w-1/3">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-full rounded-md border border-gray-300 px-4 py-2 pl-10 focus:border-blue-500 focus:ring focus:ring-blue-200"
+            />
+            <Search
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+              size={20}
+            />
+          </div>
+
+          {/* Right Side - Icons */}
+          <div className="flex items-center gap-6">
+            <a href="#" className="text-gray-900 hover:text-green-600">
+              <MessageCircle size={24} />
+            </a>
+            <a href="#" className="text-gray-900 hover:text-blue-600">
+              <User size={24} />
+            </a>
+          </div>
         </nav>
       </header>
 
       {/* Mobile Navigation (Logo + Menu Button) */}
-      <header className="fixed top-0 left-0 z-50 w-full bg-white shadow-sm lg:hidden">
-        <nav className="mx-auto h-16 max-w-7xl px-5 flex justify-between items-center">
+      <header className="fixed left-0 top-0 z-50 w-full bg-slate-50 shadow-sm lg:hidden">
+        <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 text-gray-900">
             <Image width={100} height={100} src={Logo} alt="logo" />
           </a>
+          <div className="flex items-center gap-3 align-middle">
+            <a href="#" className="">
+              <Image src={whatsapp} alt="whatsapp" width={25} height={50} />
+            </a>
 
-          {/* Mobile Menu Button */}
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2">
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+            <a href="#" className="flex flex-col items-center text-gray-700">
+              <ShoppingCart className="h-5 w-6" />
+            </a>
+          </div>
         </nav>
       </header>
 
       {/* Bottom Navigation Bar for Mobile */}
-      <nav className="fixed bottom-0 left-0 z-50 w-full bg-white shadow-md lg:hidden">
-        <ul className="flex justify-around py-2">
+      <nav className="fixed bottom-0 left-0 z-50 w-full bg-slate-50 shadow-lg lg:hidden">
+        <ul className="flex justify-around py-3">
           <li>
             <a href="#" className="flex flex-col items-center text-gray-700">
               <Home className="h-5 w-5" />
-              <span className="text-xs">Home</span>
+              <span className="text-xs font-semibold">Home</span>
             </a>
           </li>
           <li>
             <a href="#" className="flex flex-col items-center text-gray-700">
-              <List className="h-5 w-5" />
-              <span className="text-xs">Category</span>
+              <LayoutGrid className="h-5 w-5" />
+              <span className="text-xs font-semibold">Categories</span>
             </a>
           </li>
           <li>
             <a href="#" className="flex flex-col items-center text-gray-700">
-              <Mail className="h-5 w-5" />
-              <span className="text-xs">Contact</span>
+              <ShoppingCart className="h-5 w-5" />
+              <span className="text-xs font-semibold">Cart</span>
             </a>
           </li>
           <li>
             <a href="#" className="flex flex-col items-center text-gray-700">
               <User className="h-5 w-5" />
-              <span className="text-xs">Profile</span>
+              <span className="text-xs font-semibold">Profile</span>
             </a>
           </li>
         </ul>
