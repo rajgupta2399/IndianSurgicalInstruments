@@ -38,30 +38,57 @@ export default function Home() {
         <Suspense fallback={""}>
           <DigitalInstrumentsSection />
         </Suspense>
+        <div className="pt-0">
+          <hr className="" />
+        </div>
         <Suspense fallback={""}>
           <InjectableDrugsSection />
         </Suspense>
+        <div className="pt-0">
+          <hr className="" />
+        </div>
         <Suspense fallback={""}>
           <SurgicalSection />
         </Suspense>
+        <div className="pt-0">
+          <hr className="" />
+        </div>
         <Suspense fallback={""}>
           <OrthopaedicSection />
         </Suspense>
+        <div className="pt-0">
+          <hr className="" />
+        </div>
         <Suspense fallback={""}>
           <GauzeSection />
         </Suspense>
+        <div className="pt-0">
+          <hr className="" />
+        </div>
         <Suspense fallback={""}>
           <BabyCareSection />
         </Suspense>
+        <div className="pt-0">
+          <hr className="" />
+        </div>
         <Suspense fallback={""}>
           <HomeAndPersonalSection />
         </Suspense>
+        <div className="pt-0">
+          <hr className="" />
+        </div>
         <Suspense fallback={""}>
           <CriticalCareSection />
         </Suspense>
+        <div className="pt-0">
+          <hr className="" />
+        </div>
         <Suspense fallback={""}>
           <UrologyCareSection />
         </Suspense>
+        <div className="pt-0">
+          <hr className="" />
+        </div>
       </main>
     </>
   );
@@ -119,6 +146,10 @@ async function FeaturedProducts() {
           <CarouselPrevious className="absolute top-1/2 z-10 -translate-y-1/2 sm:left-0" />
           <CarouselNext className="absolute top-1/2 z-10 -translate-y-1/2 sm:right-0" />
         </Carousel>
+      </div>
+
+      <div className="pt-3">
+        <hr className="" />
       </div>
       {/* <pre>{JSON.stringify(featuredProducts, null, 1)}</pre> */}
     </div>
