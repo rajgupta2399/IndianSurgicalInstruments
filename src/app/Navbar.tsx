@@ -73,7 +73,7 @@ const Header = () => {
           <div className="flex items-center gap-8">
             {/* Logo */}
             <a href="#" className="flex items-center gap-2 text-gray-900">
-              <Image width={110} height={100} src={Logo} alt="logo" />
+              <Image width={125} height={100} src={Logo} alt="logo" />
             </a>
 
             {/* Navigation Links */}
