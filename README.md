@@ -20,3 +20,6 @@ The Indian Surgical Instruments Project is an e-commerce web application designe
 - Allows users to add products to their cart and manage quantities.
 - Implements a streamlined checkout process integrated with payment gateways.
 - Ensures secure transactions and order tracking.
+
+#### Main Categories :
+- Digital Instruments
