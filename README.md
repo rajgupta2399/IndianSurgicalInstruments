@@ -24,3 +24,10 @@ The Indian Surgical Instruments Project is an e-commerce web application designe
 #### Main Categories Sections Home Page:
 - Digital Instruments Section 
 - Baby Care Section
+- Critical Care
+- Surgical 
+- Injectables Drugs
+- Gauze Products
+- Orthopaedic Supplies
+- Home and Personal Protection
+- Urolgy
