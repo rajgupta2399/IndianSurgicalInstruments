@@ -1,4 +1,3 @@
-"use client";
 import * as React from "react";
 import {
   Home,
@@ -6,6 +5,13 @@ import {
   LayoutGrid,
   ShoppingCart,
   CodesandboxIcon,
+  Baby,
+  GitCommitVerticalIcon,
+  MusicIcon,
+  Bandage,
+  FileDigit,
+  HomeIcon,
+  PanelTopInactive,
 } from "lucide-react";
 import Image from "next/image";
 import Logo from "../assets/logo1.png";
@@ -25,9 +31,100 @@ import whatsapp from "../assets/whatsapp.png";
 import ProfileIcon from "@/components/_components/ProfileIcon";
 // import { MoonIcon } from "@/components/_components/Icons/MoonIcon";
 import { SunIcon } from "@/components/_components/Icons/SunIcon";
+import { getWixClient } from "@/lib/wix-client.base";
 
-const Header = () => {
-  const components: { title: string; href: string; description: string }[] = [
+async function getCart() {
+  const wixClient = getWixClient();
+  try {
+    return await wixClient.currentCart.getCurrentCart();
+  } catch (error) {
+    if (
+      (error as any).details.applicationError.code === "OWNED_CART_NOT_FOUND"
+    ) {
+      return null;
+    } else {
+      throw error;
+    }
+  }
+}
+
+interface ComponentItem {
+  title: string;
+  href: string;
+  description?: string;
+  icon: React.ReactElement; // Correct TypeScript type for JSX Elements
+}
+
+export default async function Header() {
+  const components: ComponentItem[] = [
+    {
+      title: "Baby Care",
+      href: "/baby-care",
+      icon: <Baby className="h-5 w-5 text-blue-600" />,
+    },
+    {
+      title: "Critical Care",
+      href: "/docs/primitives/hover-card",
+      icon: <GitCommitVerticalIcon className="h-5 w-5 text-green-600" />,
+    },
+    {
+      title: "Digital Instruments",
+      href: "/docs/primitives/progress",
+      icon: <FileDigit className="h-5 w-5 text-purple-600" />,
+    },
+    {
+      title: "Gauze Products",
+      href: "/docs/primitives/progress",
+      icon: <Bandage className="h-5 w-5 text-purple-600" />,
+    },
+    {
+      title: "Home and Personal Protection",
+      href: "/docs/primitives/progress",
+      icon: <HomeIcon className="h-5 w-5 text-purple-600" />,
+    },
+    {
+      title: "Home Patient care",
+      href: "/docs/primitives/progress",
+      icon: <PanelTopInactive className="h-5 w-5 text-purple-600" />,
+    },
+    {
+      title: "Laboratory Products",
+      href: "/docs/primitives/progress",
+      icon: <MusicIcon className="h-5 w-5 text-purple-600" />,
+    },
+    {
+      title: "Orthopaedic Supplies",
+      href: "/docs/primitives/progress",
+      icon: <MusicIcon className="h-5 w-5 text-purple-600" />,
+    },
+    {
+      title: "Pediatrician",
+      href: "/docs/primitives/progress",
+      icon: <MusicIcon className="h-5 w-5 text-purple-600" />,
+    },
+    {
+      title: "Surgical",
+      href: "/docs/primitives/progress",
+      icon: <MusicIcon className="h-5 w-5 text-purple-600" />,
+    },
+    {
+      title: "Surgical Sutures",
+      href: "/docs/primitives/progress",
+      icon: <MusicIcon className="h-5 w-5 text-purple-600" />,
+    },
+    {
+      title: "Syringe & Needles",
+      href: "/docs/primitives/progress",
+      icon: <MusicIcon className="h-5 w-5 text-purple-600" />,
+    },
+    {
+      title: "Urology",
+      href: "/docs/primitives/progress",
+      icon: <MusicIcon className="h-5 w-5 text-purple-600" />,
+    },
+  ];
+
+  const brands: { title: string; href: string; description: string }[] = [
     {
       title: "Alert Dialog",
       href: "/docs/primitives/alert-dialog",
@@ -64,6 +161,11 @@ const Header = () => {
         "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
     },
   ];
+
+  const cart = await getCart();
+  const totalQuantity =
+    cart?.lineItems.reduce((acc, item) => acc + (item.quantity || 0), 0) || 0;
+
   return (
     <>
       {/* Top Navbar for Large Screens */}
@@ -102,15 +204,19 @@ const Header = () => {
                           </Link>
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
-                          <ul className="grid gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[850px]">
+                          <ul className="grid gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[650px]">
                             {components.map((component) => (
-                              <ListItem
+                              <Link
                                 key={component.title}
                                 title={component.title}
                                 href={component.href}
+                                className=" ml-10"
                               >
-                                {component.description}
-                              </ListItem>
+                                <div className="flex items-center gap-2">
+                                  {component.icon} {/* Display icon */}
+                                  <span>{component.title}</span>
+                                </div>
+                              </Link>
                             ))}
                           </ul>
                         </NavigationMenuContent>
@@ -144,7 +250,7 @@ const Header = () => {
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
                           <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[700px]">
-                            {components.map((component) => (
+                            {brands.map((component) => (
                               <ListItem
                                 key={component.title}
                                 title={component.title}
@@ -178,10 +284,21 @@ const Header = () => {
 
           {/* Right Side - Icons */}
           <div className="flex items-center gap-3">
+            <div className="relative">
+              <a href="#" className="flex flex-col items-center text-gray-700">
+                <ShoppingCart className="h-6 w-8" />
+              </a>
+              {/* Badge for Cart Quantity */}
+              {totalQuantity > 0 && (
+                <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
+                  {totalQuantity}
+                </span>
+              )}
+            </div>
             <ProfileIcon />
-            <a href="#" className="">
+            {/* <a href="#" className="">
               <Image src={whatsapp} alt="whatsapp" width={35} height={50} />
-            </a>
+            </a> */}
             <div className="flex w-6">
               <SunIcon className="" />
             </div>
@@ -239,9 +356,7 @@ const Header = () => {
       </nav>
     </>
   );
-};
-
-export default Header;
+}
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
