@@ -31,22 +31,9 @@ import whatsapp from "../assets/whatsapp.png";
 import ProfileIcon from "@/components/_components/ProfileIcon";
 // import { MoonIcon } from "@/components/_components/Icons/MoonIcon";
 import { SunIcon } from "@/components/_components/Icons/SunIcon";
-import { getWixClient } from "@/lib/wix-client.base";
+import { getCart } from "@/wix-api/cart";
+// import { getWixClient } from "@/lib/wix-client.base";
 
-async function getCart() {
-  const wixClient = getWixClient();
-  try {
-    return await wixClient.currentCart.getCurrentCart();
-  } catch (error) {
-    if (
-      (error as any).details.applicationError.code === "OWNED_CART_NOT_FOUND"
-    ) {
-      return null;
-    } else {
-      throw error;
-    }
-  }
-}
 
 interface ComponentItem {
   title: string;
@@ -162,7 +149,7 @@ export default async function Header() {
     },
   ];
 
-  const cart = await getCart();
+  const cart = await getCart()
   const totalQuantity =
     cart?.lineItems.reduce((acc, item) => acc + (item.quantity || 0), 0) || 0;
 
