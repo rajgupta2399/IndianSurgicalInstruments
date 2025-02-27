@@ -32,4 +32,7 @@ The Indian Surgical Instruments Project is an e-commerce web application designe
 - Home and Personal Protection
 - Urolgy
 
-Live Link : https://indiansurgicalinstruments.netlify.app/
+Live Link : https://indiansurgicalinstruments.netlify.app
+
+Wix-Api 
+- cart.ts
