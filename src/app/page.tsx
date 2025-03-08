@@ -2,7 +2,7 @@
 // import banner from "../assets/banner1.webp";
 // import Image from "next/image";
 import { Suspense } from "react";
-import { getWixClient } from "@/lib/wix-client.base";
+// import { getWixClient } from "@/lib/wix-client.base";
 import Product from "@/components/_components/Product";
 // import { Skeleton } from "@/components/ui/skeleton";
 import * as React from "react";
@@ -26,6 +26,8 @@ import BabyCareSection from "@/components/_components/HomeComponentSection/BabyC
 import HomeAndPersonalSection from "@/components/_components/HomeComponentSection/HomePersonalSection";
 import CriticalCareSection from "@/components/_components/HomeComponentSection/CriticalCareSection";
 import UrologyCareSection from "@/components/_components/HomeComponentSection/UrologySection";
+import { getCollectionBySlug } from "@/wix-api/collections";
+import { queryProducts } from "@/wix-api/products";
 
 export default function Home() {
   return (
@@ -97,20 +99,14 @@ export default function Home() {
 async function FeaturedProducts() {
   // await delay(1000);
 
-  const wixClient = getWixClient();
-
-  const { collection } =
-    await wixClient.collections.getCollectionBySlug("featured-products");
-
+  const collection = await getCollectionBySlug("featured-products");
   if (!collection?._id) {
     return null;
   }
 
-  const featuredProducts = await wixClient.products
-    .queryProducts()
-    .hasSome("collectionIds", [collection._id])
-    .descending("lastUpdated")
-    .find();
+  const featuredProducts = await queryProducts({
+    collectionIds: collection._id,
+  });
 
   if (!featuredProducts.items.length) {
     return null;
