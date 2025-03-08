@@ -5,15 +5,8 @@ import {
   LayoutGrid,
   ShoppingCart,
   CodesandboxIcon,
-  Baby,
-  GitCommitVerticalIcon,
-  MusicIcon,
-  Bandage,
-  FileDigit,
-  HomeIcon,
-  PanelTopInactive,
 } from "lucide-react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Logo from "../assets/logo1.png";
 import { Search } from "lucide-react";
 import Link from "next/link";
@@ -32,14 +25,25 @@ import ProfileIcon from "@/components/_components/ProfileIcon";
 // import { MoonIcon } from "@/components/_components/Icons/MoonIcon";
 import { SunIcon } from "@/components/_components/Icons/SunIcon";
 import { getCart } from "@/wix-api/cart";
-// import { getWixClient } from "@/lib/wix-client.base";
-
+import BabyCare from "../assets/babyCare.png";
+import CriticalCare from "../assets/criticalCare.png";
+import DigitalInstrument from "../assets/digitalInstrument.png";
+import GauzeProducts from "../assets/gauzeProduct.png";
+import HomePersonal from "../assets/homeAndPersonal.png";
+import HomePatient from "../assets/home-patient-care.png";
+import LabortoryProducts from "../assets/laboratory-products.png";
+import OrthoProducts from "../assets/ortho.png";
+// import Pediatric from "../assets/pediatric.png";
+import Surgical from "../assets/surgical.png";
+import SurgicalSutures from "../assets/surgical-sutures.png";
+import SyringeNeedles from "../assets/syringe.png";
+import Urology from "../assets/urology.png";
 
 interface ComponentItem {
   title: string;
   href: string;
   description?: string;
-  icon: React.ReactElement; // Correct TypeScript type for JSX Elements
+  icon: string | StaticImageData; // Correct TypeScript type for JSX Elements
 }
 
 export default async function Header() {
@@ -47,67 +51,67 @@ export default async function Header() {
     {
       title: "Baby Care",
       href: "/baby-care",
-      icon: <Baby className="h-5 w-5 text-blue-600" />,
+      icon: BabyCare, // Use the imported image URL
     },
     {
       title: "Critical Care",
       href: "/docs/primitives/hover-card",
-      icon: <GitCommitVerticalIcon className="h-5 w-5 text-green-600" />,
+      icon: CriticalCare, // Use the imported image URL
     },
     {
       title: "Digital Instruments",
       href: "/docs/primitives/progress",
-      icon: <FileDigit className="h-5 w-5 text-purple-600" />,
+      icon: DigitalInstrument, // Use the imported image URL
     },
     {
       title: "Gauze Products",
       href: "/docs/primitives/progress",
-      icon: <Bandage className="h-5 w-5 text-purple-600" />,
+      icon: GauzeProducts, // Use the imported image URL
     },
     {
       title: "Home and Personal Protection",
       href: "/docs/primitives/progress",
-      icon: <HomeIcon className="h-5 w-5 text-purple-600" />,
+      icon: HomePersonal, // Use the imported image URL
     },
     {
       title: "Home Patient care",
       href: "/docs/primitives/progress",
-      icon: <PanelTopInactive className="h-5 w-5 text-purple-600" />,
+      icon: HomePatient, // Use the imported image URL
     },
     {
       title: "Laboratory Products",
       href: "/docs/primitives/progress",
-      icon: <MusicIcon className="h-5 w-5 text-purple-600" />,
+      icon: LabortoryProducts, // Use the imported image URL
     },
     {
       title: "Orthopaedic Supplies",
       href: "/docs/primitives/progress",
-      icon: <MusicIcon className="h-5 w-5 text-purple-600" />,
+      icon: OrthoProducts, // Use the imported image URL
     },
-    {
-      title: "Pediatrician",
-      href: "/docs/primitives/progress",
-      icon: <MusicIcon className="h-5 w-5 text-purple-600" />,
-    },
+    // {
+    //   title: "Pediatrician",
+    //   href: "/docs/primitives/progress",
+    //   icon: Pediatric, // Use the imported image URL
+    // },
     {
       title: "Surgical",
       href: "/docs/primitives/progress",
-      icon: <MusicIcon className="h-5 w-5 text-purple-600" />,
+      icon: Surgical, // Use the imported image URL
     },
     {
       title: "Surgical Sutures",
       href: "/docs/primitives/progress",
-      icon: <MusicIcon className="h-5 w-5 text-purple-600" />,
+      icon: SurgicalSutures, // Use the imported image URL
     },
     {
       title: "Syringe & Needles",
       href: "/docs/primitives/progress",
-      icon: <MusicIcon className="h-5 w-5 text-purple-600" />,
+      icon: SyringeNeedles, // Use the imported image URL
     },
     {
       title: "Urology",
       href: "/docs/primitives/progress",
-      icon: <MusicIcon className="h-5 w-5 text-purple-600" />,
+      icon: Urology, // Use the imported image URL
     },
   ];
 
@@ -149,7 +153,7 @@ export default async function Header() {
     },
   ];
 
-  const cart = await getCart()
+  const cart = await getCart();
   const totalQuantity =
     cart?.lineItems.reduce((acc, item) => acc + (item.quantity || 0), 0) || 0;
 
@@ -172,10 +176,6 @@ export default async function Header() {
                   href="#"
                   className="nav-link flex items-center gap-1 align-middle"
                 >
-                  {/* <LayoutGrid className="h-4 w-4" />
-                  <span className="text-sm font-semibold uppercase">
-                    Browse Categories
-                  </span> */}
                   <NavigationMenu>
                     <NavigationMenuList>
                       <NavigationMenuItem>
@@ -191,17 +191,24 @@ export default async function Header() {
                           </Link>
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
-                          <ul className="grid gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[650px]">
+                          <ul className="grid gap-4 p-4 md:w-[500px] md:grid-cols-4 lg:w-[850px]">
                             {components.map((component) => (
                               <Link
                                 key={component.title}
                                 title={component.title}
                                 href={component.href}
-                                className=" ml-10"
+                                className="flex flex-col items-center justify-center gap-2"
                               >
-                                <div className="flex items-center gap-2">
-                                  {component.icon} {/* Display icon */}
-                                  <span>{component.title}</span>
+                                <div className="flex flex-col items-center justify-center gap-2">
+                                  <Image
+                                    src={component.icon}
+                                    alt={component.title}
+                                    className="h-16 w-16 object-cover" // Larger image size
+                                  />
+                                  <span className="text-center text-sm pb-2 font-semibold transition-colors duration-300 ease-in-out hover:text-blue-500">
+                                    {component.title}
+                                  </span>
+                                  {/* Title below the image */}
                                 </div>
                               </Link>
                             ))}

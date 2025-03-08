@@ -23,7 +23,7 @@ const Banners = () => {
     >
       <CarouselContent>
         <CarouselItem>
-          <div className="flex h-28 w-full items-center justify-center bg-secondary md:h-60">
+          <div className="flex h-28 w-full items-center justify-center bg-secondary md:h-60 sm:mt-4">
             <Image
               src={banner1}
               alt="Banner 1"
